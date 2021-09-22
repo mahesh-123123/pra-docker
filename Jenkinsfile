@@ -34,19 +34,6 @@ pipeline {
             }
           }
         
-        stage('Deploy in Tomcat') {
-            steps {
-                deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://localhost:8080/')], contextPath: 'tom', war: '**/*.war'
-            }
-        }
-        stage('Email') {
-            steps {
-                mail bcc: '', body: '''Dear Sir,
-                        i am Mahesh Reddy from testing department. web application was successfully git clone, 
-                        maven build, docker build, push docker hub, 
-                        deploy in tomcat sending to mail..''', cc: '', from: '', replyTo: '', subject: 'jenkins to docker hub', to: 'mmssrraju123@gmail.com'
-                
-            }
-        }
+        
     }
 }
